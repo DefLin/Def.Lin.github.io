@@ -2,12 +2,12 @@
 <search>
   <entry>
     <title><![CDATA[关于回调函数的理解]]></title>
-    <url>%2Fhexo%2F2018%2F05%2F26%2F%E5%85%B3%E4%BA%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3%2F</url>
+    <url>%2FBlog%2F2018%2F05%2F26%2F%E5%85%B3%E4%BA%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[example实例中 populate_array 函数定义了三个参数，其中第三个参数是函数的指针，通过该函数来设置数组的值。 实例中我们定义了回调函数 getNextRandomValue，它返回一个随机值，它作为一个函数指针传递给 populate_array 函数。 populate_array 将调用 10 次回调函数，并将回调函数的返回值赋值给数组。 12345678910111213141516171819202122232425262728#include &lt;stdlib.h&gt; #include &lt;stdio.h&gt; // 回调函数 void populate_array(int *array, size_t arraySize, int (*getNextValue)(void)) &#123; for (size_t i=0; i&lt;arraySize; i++) array[i] = getNextValue(); &#125; // 获取随机值 int getNextRandomValue(void) &#123; return rand(); &#125; int main(void) &#123; int myarray[10];//此处getNextValue指向 getNextRandomValue函数的地址，起到调用作用 populate_array(myarray, 10, getNextRandomValue); for(int i = 0; i &lt; 10; i++) &#123; printf("%d ", myarray[i]); &#125; printf("\n"); return 0; &#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Fhexo%2F2018%2F05%2F24%2Fhello-world%2F</url>
+    <url>%2FBlog%2F2018%2F05%2F24%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
