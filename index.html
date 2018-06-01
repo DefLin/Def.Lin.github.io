@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -393,6 +393,40 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  989
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+
+              
+
+            </div>
+          
           
 
           
@@ -413,19 +447,17 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.在C中，当我们无法列出传递函数的所有实参的类型和数目时,可以用省略号指定参数表</p>
-<p>void foo(…);<br>void foo(parm_list,…);<br>这种方式和我们以前认识的不大一样，但我们要记住这是C中一种传参的形式，在后面我们就会用到它。</p>
-<p>2.函数参数的传递原理<br>　　函数参数是以数据结构:栈的形式存取,从右至左入栈。</p>
-<p>　　首先是参数的内存存放格式：参数存放在内存的堆栈段中，在执行函数的时候，从最后一个开始入栈。因此栈底高地址，栈顶低地址，举个例子如下：<br>void func(int x, float y, char z);<br>　　那么，调用函数的时候，实参 char z 先进栈，然后是 float y，最后是 int x，因此在内存中变量的存放次序是 x-&gt;y-&gt;z，因此，从理论上说，我们只要探测到任意一个变量的地址，并且知道其他变量的类型，通过指针移位运算，则总可以顺藤摸瓜找到其他的输入变量。</p>
-<p>　　下面是 &lt;stdarg.h&gt; 里面重要的几个宏定义如下：<br>typedef char<em> va_list;<br>void va_start ( va_list ap, prev_param ); /</em> ANSI version */<br>type va_arg ( va_list ap, type );<br>void va_end ( va_list ap );<br>va_list 是一个字符指针，可以理解为指向当前参数的一个指针，取参必须通过这个指针进行。</p>
-<p><step 1=""> 在调用参数表之前，定义一个 va_list 类型的变量，(假设va_list 类型变量被定义为ap)；</step></p>
-<p><step 2=""> 然后应该对ap 进行初始化，让它指向可变参数表里面的第一个参数，这是通过 va_start 来实现的，第一个参数是 ap 本身，第二个参数是在变参表前面紧挨着的一个变量,即“…”之前的那个参数；</step></p>
-<p><step 3=""> 然后是获取参数，调用va_arg，它的第一个参数是ap，第二个参数是要获取的参数的指定类型，然后返回这个指定类型的值，并且把 ap 的位置指向变参表的下一个变量位置；</step></p>
-<p><step 4=""> 获取所有的参数之后，我们有必要将这个 ap 指针关掉，以免发生危险，方法是调用 va_end，他是输入的参数 ap 置为 NULL，应该养成获取完参数表之后关闭指针的习惯。说白了，就是让我们的程序具有健壮性。通常va_start和va_end是成对出现。</step></p>
-<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream.h&gt; void fun(int a, ...) &#123; 　　int *temp = &amp;a;　　temp++;</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">for</span> (int i = 0; i &lt; a; ++i) </span><br><span class="line">　　&#123; </span><br><span class="line">　　　　cout &lt;&lt; *temp &lt;&lt; endl; </span><br><span class="line">　　　　temp++; </span><br><span class="line">　　&#125; </span><br><span class="line">&#125;</span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">　　int a = 1; </span><br><span class="line">　　int b = 2; </span><br><span class="line">　　int c = 3; </span><br><span class="line">　　int d = 4; </span><br><span class="line">　　fun(4, a, b, c, d); </span><br><span class="line">　　system(<span class="string">"pause"</span>); </span><br><span class="line">　　<span class="built_in">return</span> 0; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">Output:: </span><br><span class="line">1 </span><br><span class="line">2 </span><br><span class="line">3 </span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<p>3:获取省略号指定的参数<br>　　在函数体中声明一个va_list，然后用va_start函数来获取参数列表中的参数，使用完毕后调用va_end()结束。像这段代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">void TestFun(char* pszDest, int DestLen, const char* pszFormat, ...) &#123; va_list args; va_start(args, pszFormat); //一定要“...”之前的那个参数_vsnprintf(pszDest, DestLen, pszFormat, args); va_end(args); &#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">4.演示如何使用参数个数可变的函数，采用ANSI标准形式 </span><br><span class="line"><span class="comment">#include 〈stdio.h〉 </span></span><br><span class="line"><span class="comment">#include 〈string.h〉 </span></span><br><span class="line"><span class="comment">#include 〈stdarg.h〉 </span></span><br><span class="line"></span><br><span class="line">/*函数原型声明，至少需要一个确定的参数，注意括号内的省略号*/ </span><br><span class="line">int demo( char, ... ); </span><br><span class="line">void main( void ) </span><br><span class="line">&#123; </span><br><span class="line">   demo(<span class="string">"DEMO"</span>, <span class="string">"This"</span>, <span class="string">"is"</span>, <span class="string">"a"</span>, <span class="string">"demo!"</span>, <span class="string">""</span>); </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">/*ANSI标准形式的声明方式，括号内的省略号表示可选参数*/ </span><br><span class="line">int demo( char msg, ... ) </span><br><span class="line">&#123; </span><br><span class="line">       /*定义保存函数参数的结构*/</span><br><span class="line">   va_list argp; </span><br><span class="line">   int argno = 0; </span><br><span class="line">   char para; </span><br><span class="line">　　   /*argp指向传入的第一个可选参数，msg是最后一个确定的参数*/ </span><br><span class="line">   va_start( argp, msg ); </span><br><span class="line">   <span class="keyword">while</span> (1) </span><br><span class="line">       &#123; </span><br><span class="line">        para = va_arg( argp, char); </span><br><span class="line">           <span class="keyword">if</span> ( strcmp( para, <span class="string">""</span>) == 0 ) </span><br><span class="line">               <span class="built_in">break</span>; </span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">"Parameter #%d is: %s\n"</span>, argno, para); </span><br><span class="line">           argno++; </span><br><span class="line">&#125; </span><br><span class="line">va_end( argp ); </span><br><span class="line">/*将argp置为NULL*/</span><br><span class="line"><span class="built_in">return</span> 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          前言1.在C中，当我们无法列出传递函数的所有实参的类型和数目时,可以用省略号指定参数表
+void foo(…);void foo(parm_list,…);这种方式和我们以前认识的不大一样，但我们要记住这是C中一种传参的形式，在后面我们就会用到它。
+2.函数参数的传递原理　　函数参数是以数据结构:栈
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/01/va_start和va_end使用详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -546,6 +578,40 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  202
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+
+              
+
+            </div>
+          
           
 
           
@@ -566,9 +632,15 @@
       
         
           
-            <h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p>typedef char* va_list;//用于声明一个指向参数列表的字符型指针变量<br>void va_start(va_list ap,prev_param);//第一个参数为指向可变参数字符指针变量，第二个参数是可变参数的第一个参数，通常用于指定可变参数列表中参数的个数<br>void va_arg(va_list ap,type);//第一个参数为指向可变参数字符指针变量，第二个参数是可变参数的数据类型<br>void va_end(va_list ap);//将存放可变参数字符串的变量清空（赋值为NULL）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int sum(int count,...)//计算和</span><br><span class="line">&#123;</span><br><span class="line">     int sum = 0;</span><br><span class="line">     int i;</span><br><span class="line">     va_list ap;</span><br><span class="line">     va_start(ap,count);</span><br><span class="line">     <span class="keyword">for</span>(i=0;i&lt;count;++i)</span><br><span class="line">     &#123;</span><br><span class="line">          sum+=va_arg(ap,int);</span><br><span class="line">     &#125;</span><br><span class="line">     va_end(ap);</span><br><span class="line">     <span class="built_in">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%d\r\n"</span>,sum(3,1,2,3));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          exampletypedef char* va_list;//用于声明一个指向参数列表的字符型指针变量void va_start(va_list ap,prev_param);//第一个参数为指向可变参数字符指针变量，第二个参数是可变参数的第一个参数，通常用于指定可变参数列表中参数的个数void v
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/30/可变参数函数用法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -689,6 +761,40 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  209
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+
+              
+
+            </div>
+          
           
 
           
@@ -709,12 +815,17 @@
       
         
           
-            <h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p>实例中 populate_array 函数定义了三个参数，其中第三个参数是函数的指针，通过该函数来设置数组的值。</p>
-<p>实例中我们定义了回调函数 getNextRandomValue，它返回一个随机值，它作为一个函数指针传递给 populate_array 函数。</p>
-<p>populate_array 将调用 10 次回调函数，并将回调函数的返回值赋值给数组。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdlib.h&gt;  </span></span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt; </span></span><br><span class="line">// 回调函数 </span><br><span class="line">void populate_array(int *array, size_t arraySize, int (*getNextValue)(void)) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">for</span> (size_t i=0; i&lt;arraySize; i++) </span><br><span class="line">        array[i] = getNextValue(); </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">// 获取随机值 </span><br><span class="line">int getNextRandomValue(void) &#123; </span><br><span class="line"></span><br><span class="line">     <span class="built_in">return</span> rand(); </span><br><span class="line">&#125; </span><br><span class="line">int main(void) </span><br><span class="line">&#123; </span><br><span class="line">    int myarray[10];</span><br><span class="line"></span><br><span class="line">//此处getNextValue指向 getNextRandomValue函数的地址，起到调用作用</span><br><span class="line">    populate_array(myarray, 10, getNextRandomValue);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(int i = 0; i &lt; 10; i++)</span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, myarray[i]); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>); </span><br><span class="line">    <span class="built_in">return</span> 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          example实例中 populate_array 函数定义了三个参数，其中第三个参数是函数的指针，通过该函数来设置数组的值。
+实例中我们定义了回调函数 getNextRandomValue，它返回一个随机值，它作为一个函数指针传递给 populate_array 函数。
+populate_arra
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/26/关于回调函数的理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -871,7 +982,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -880,16 +993,27 @@
   
 </div>
 
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
 
 
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共1.4k字</span>
+</div>
         
 
 
@@ -991,6 +1115,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
