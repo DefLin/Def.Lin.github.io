@@ -43,7 +43,7 @@
     <link href="https://deflin.github.io/2018/05/30/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95/"/>
     <id>https://deflin.github.io/2018/05/30/可变参数函数用法/</id>
     <published>2018-05-30T13:26:12.694Z</published>
-    <updated>2018-05-30T13:29:05.664Z</updated>
+    <updated>2018-06-05T11:34:27.737Z</updated>
     
     <content type="html"><![CDATA[<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p>typedef char* va_list;//用于声明一个指向参数列表的字符型指针变量<br>void va_start(va_list ap,prev_param);//第一个参数为指向可变参数字符指针变量，第二个参数是可变参数的第一个参数，通常用于指定可变参数列表中参数的个数<br>void va_arg(va_list ap,type);//第一个参数为指向可变参数字符指针变量，第二个参数是可变参数的数据类型<br>void va_end(va_list ap);//将存放可变参数字符串的变量清空（赋值为NULL）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int sum(int count,...)//计算和</span><br><span class="line">&#123;</span><br><span class="line">     int sum = 0;</span><br><span class="line">     int i;</span><br><span class="line">     va_list ap;</span><br><span class="line">     va_start(ap,count);</span><br><span class="line">     <span class="keyword">for</span>(i=0;i&lt;count;++i)</span><br><span class="line">     &#123;</span><br><span class="line">          sum+=va_arg(ap,int);</span><br><span class="line">     &#125;</span><br><span class="line">     va_end(ap);</span><br><span class="line">     <span class="built_in">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%d\r\n"</span>,sum(3,1,2,3));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -56,6 +56,10 @@
     
     </summary>
     
+      <category term="当时我所不知道的C语言" scheme="https://deflin.github.io/categories/%E5%BD%93%E6%97%B6%E6%88%91%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="C" scheme="https://deflin.github.io/tags/C/"/>
     
   </entry>
   
