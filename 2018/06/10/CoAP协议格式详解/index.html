@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Def.Lin." />
+  <meta name="keywords" content="CoAP,网络协议," />
 
 
 
@@ -80,8 +80,9 @@
 
 
 <meta name="description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
+<meta name="keywords" content="CoAP,网络协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="林定益想去NASA捡垃圾">
+<meta property="og:title" content="CoAP协议——格式详解">
 <meta property="og:url" content="https://deflin.github.io/2018/06/10/CoAP协议格式详解/index.html">
 <meta property="og:site_name" content="林定益想去NASA捡垃圾">
 <meta property="og:description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
@@ -92,9 +93,9 @@
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/f0354613-2103-491d-a245-8d8f638ab9d4/wKioL1U1xeSR_2t9AACo9vCkTOU789.png">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/33faa5ba-e105-4632-86b9-d095d4f96255/wKiom1U1xKiQFK_0AABoOl6mUps467.png">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/d3e678fd-5d67-4578-9ee2-0c0adca4040d/wKiom1U1xMqSoMTtAABsGbvee8g521.png">
-<meta property="og:updated_time" content="2018-06-10T07:02:48.024Z">
+<meta property="og:updated_time" content="2018-06-10T07:08:43.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="林定益想去NASA捡垃圾">
+<meta name="twitter:title" content="CoAP协议——格式详解">
 <meta name="twitter:description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
 <meta name="twitter:image" content="https://app.yinxiang.com/shard/s62/res/2fdaef85-ef39-4091-9791-a7d66f6228b2/wKioL1U1xTSxeGZEAABcjxUkJbc353.png">
 
@@ -132,7 +133,7 @@
 
 
 
-  <title> | 林定益想去NASA捡垃圾</title>
+  <title>CoAP协议——格式详解 | 林定益想去NASA捡垃圾</title>
   
 
 
@@ -353,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">CoAP协议——格式详解</h1>
         
 
         <div class="post-meta">
@@ -375,6 +376,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/物联网/" itemprop="url" rel="index">
+                    <span itemprop="name">物联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -512,7 +535,8 @@
 <p>　　第二个Option Delta=1，表示该Option=1+11，表示Content-Format(12)</p>
 <p>　　第三个Option Delta=3，表示该Option=3+1+11，表示Uri-Query(15)</p>
 <p>　　CoAP采用这样的方式表示多个Option，而每种Option都可以在HTTP协议中找到对应项。</p>
-<h2 id="5-Content-Format描述"><a href="#5-Content-Format描述" class="headerlink" title="5.Content-Format描述"></a>5.Content-Format描述</h2><p>CoAP支持多种媒体类型，具体可参考RFC7252 #12.3。从下图的信息可以发现，CoAP协议中关于媒体类型的定义比较简单，未来应该会根据实际情况扩展。<br><img src="https://app.yinxiang.com/shard/s62/res/f0354613-2103-491d-a245-8d8f638ab9d4/wKioL1U1xeSR_2t9AACo9vCkTOU789.png" alt=""></p>
+<h2 id="5-Content-Format描述"><a href="#5-Content-Format描述" class="headerlink" title="5.Content-Format描述"></a>5.Content-Format描述</h2><p>CoAP支持多种媒体类型，具体可参考RFC7252 #12.3。从下图的信息可以发现，CoAP协议中关于媒体类型的定义比较简单，未来应该会根据实际情况扩展。</p>
+<p><img src="https://app.yinxiang.com/shard/s62/res/f0354613-2103-491d-a245-8d8f638ab9d4/wKioL1U1xeSR_2t9AACo9vCkTOU789.png" alt=""></p>
 <p>【text/plain】 编号为0，表示负载为字符串形式，默认为UTF8编码。</p>
 <p>　　【application/link-format】编号为40，CoAP资源发现协议中追加定义，该媒体类型为CoAP协议特有。</p>
 <p>　　【application/xml】编号为41，表示负载类型为XML格式。</p>
@@ -567,6 +591,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CoAP/" rel="tag"># CoAP</a>
+          
+            <a href="/tags/网络协议/" rel="tag"># 网络协议</a>
+          
+        </div>
       
 
       
@@ -687,7 +719,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -698,7 +730,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -956,7 +988,7 @@
         var disqus_config = function () {
           this.page.url = 'https://deflin.github.io/2018/06/10/CoAP协议格式详解/';
           this.page.identifier = '2018/06/10/CoAP协议格式详解/';
-          this.page.title = '';
+          this.page.title = 'CoAP协议——格式详解';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://michaelxiang.disqus.com/embed.js';
