@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
+<meta name="description" content="CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协议非常小巧，最小">
 <meta name="keywords" content="CoAP,网络协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CoAP协议——格式详解">
 <meta property="og:url" content="https://deflin.github.io/2018/06/10/CoAP协议格式详解/index.html">
 <meta property="og:site_name" content="林定益想去NASA捡垃圾">
-<meta property="og:description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
+<meta property="og:description" content="CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协议非常小巧，最小">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/2fdaef85-ef39-4091-9791-a7d66f6228b2/wKioL1U1xTSxeGZEAABcjxUkJbc353.png">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/184076a0-b5d6-430b-a5de-9da3d07f4500/wKiom1U1xDTxJI7KAAB4I_iMBYc005.png">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/f0354613-2103-491d-a245-8d8f638ab9d4/wKioL1U1xeSR_2t9AACo9vCkTOU789.png">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/33faa5ba-e105-4632-86b9-d095d4f96255/wKiom1U1xKiQFK_0AABoOl6mUps467.png">
 <meta property="og:image" content="https://app.yinxiang.com/shard/s62/res/d3e678fd-5d67-4578-9ee2-0c0adca4040d/wKiom1U1xMqSoMTtAABsGbvee8g521.png">
-<meta property="og:updated_time" content="2018-06-10T07:08:43.508Z">
+<meta property="og:updated_time" content="2018-06-10T07:12:21.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CoAP协议——格式详解">
-<meta name="twitter:description" content="CoAP格式详解CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协">
+<meta name="twitter:description" content="CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协议非常小巧，最小">
 <meta name="twitter:image" content="https://app.yinxiang.com/shard/s62/res/2fdaef85-ef39-4091-9791-a7d66f6228b2/wKioL1U1xTSxeGZEAABcjxUkJbc353.png">
 
 
@@ -431,7 +431,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,855
+                  1,850
                 </span>
               
 
@@ -475,7 +475,7 @@
 
 
       
-        <h1 id="CoAP格式详解"><a href="#CoAP格式详解" class="headerlink" title="CoAP格式详解"></a>CoAP格式详解</h1><p>CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协议非常小巧，最小的包仅为4字节。</p>
+        <p>CoAP是受限制的应用协议(Constrained Application Protocol)的代名词。在当前由PC机组成的世界，交换是通过TCP和应用层协议HTTP实现的。但是对于小型设备而言，实现TCP和HTTP协议显然是一个过分的要求。为了让小设备可以接入，CoAP协议被设计出来。CoAP是一种应用层协议，它运行于UDP协议之上而不是像HTTP那样运行于TCP之上。CoAP协议非常小巧，最小的包仅为4字节。</p>
 <h2 id="1-CoAP协议综述"><a href="#1-CoAP协议综述" class="headerlink" title="1.CoAP协议综述"></a>1.CoAP协议综述</h2><p>和其他TCP IP协议簇中的协议一样，CoAP协议总是以“头”的形式出现在负载之前，而负载和CoAP头之间使用单字节0xFF分离。学习CoAP协议最好的方法便是结合RFC文档，详细分析CoAP协议报文格式的每一部分，便是CoAP协议报文结构示意图。</p>
 <p><img src="https://app.yinxiang.com/shard/s62/res/2fdaef85-ef39-4091-9791-a7d66f6228b2/wKioL1U1xTSxeGZEAABcjxUkJbc353.png" alt=""></p>
 <h2 id="2-CoAP协议报文结构示意图"><a href="#2-CoAP协议报文结构示意图" class="headerlink" title="2.CoAP协议报文结构示意图"></a>2.CoAP协议报文结构示意图</h2><p>【Ver】 版本编号，指示CoAP协议的版本号。类似于HTTP 1.0 HTTP 1.1。版本编号占2位，取值为01B。</p>
@@ -807,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CoAP格式详解"><span class="nav-number">1.</span> <span class="nav-text">CoAP格式详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CoAP协议综述"><span class="nav-number">1.1.</span> <span class="nav-text">1.CoAP协议综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CoAP协议报文结构示意图"><span class="nav-number">1.2.</span> <span class="nav-text">2.CoAP协议报文结构示意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Code部分详解"><span class="nav-number">1.3.</span> <span class="nav-text">3.Code部分详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-请求"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-响应"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 响应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Option部分详解"><span class="nav-number">1.4.</span> <span class="nav-text">4.Option部分详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Content-Format描述"><span class="nav-number">1.5.</span> <span class="nav-text">5.Content-Format描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-示例"><span class="nav-number">1.6.</span> <span class="nav-text">6.示例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CoAP协议综述"><span class="nav-number">1.</span> <span class="nav-text">1.CoAP协议综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CoAP协议报文结构示意图"><span class="nav-number">2.</span> <span class="nav-text">2.CoAP协议报文结构示意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Code部分详解"><span class="nav-number">3.</span> <span class="nav-text">3.Code部分详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-请求"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-响应"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 响应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Option部分详解"><span class="nav-number">4.</span> <span class="nav-text">4.Option部分详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Content-Format描述"><span class="nav-number">5.</span> <span class="nav-text">5.Content-Format描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-示例"><span class="nav-number">6.</span> <span class="nav-text">6.示例</span></a></li></ol></div>
             
 
           </div>

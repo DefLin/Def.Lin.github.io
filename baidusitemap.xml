@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>https://deflin.github.io/2018/06/06/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%BB%A3%E7%A0%81/</loc>
-    <lastmod>2018-06-10T07:09:01.046Z</lastmod>
-    <data>
-        <display>
-        <title>如何阅读代码</title>
-        <pubTime>2018-06-06T13:07:04.339Z</pubTime>
-        
-        <tag>C语言</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员生涯" url="https://deflin.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%94%9F%E6%B6%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://deflin.github.io/2018/06/10/CoAP%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-06-10T07:08:43.508Z</lastmod>
+    <lastmod>2018-06-10T07:12:21.382Z</lastmod>
     <data>
         <display>
         <title>CoAP协议——格式详解</title>
@@ -39,6 +19,26 @@
            
              
               <breadCrumb title="物联网" url="https://deflin.github.io/categories/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://deflin.github.io/2018/06/06/%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2018-06-10T07:09:01.046Z</lastmod>
+    <data>
+        <display>
+        <title>如何阅读代码</title>
+        <pubTime>2018-06-06T13:07:04.339Z</pubTime>
+        
+        <tag>C语言</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员生涯" url="https://deflin.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%94%9F%E6%B6%AF/"/>
           
         </display>
     </data>
