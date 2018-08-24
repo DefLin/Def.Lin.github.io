@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://deflin.github.io/"/>
-  <updated>2018-06-10T07:12:21.382Z</updated>
+  <updated>2018-08-24T14:19:20.468Z</updated>
   <id>https://deflin.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《调试九法》读书笔记</title>
+    <link href="https://deflin.github.io/2018/08/24/%E3%80%8A%E8%B0%83%E8%AF%95%E4%B9%9D%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://deflin.github.io/2018/08/24/《调试九法》读书笔记/</id>
+    <published>2018-08-24T14:19:16.182Z</published>
+    <updated>2018-08-24T14:19:20.468Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="制造失败"><a href="#制造失败" class="headerlink" title="制造失败"></a>制造失败</h1><h2 id="如果做了所有尝试之后问题仍然间歇性发生"><a href="#如果做了所有尝试之后问题仍然间歇性发生" class="headerlink" title="如果做了所有尝试之后问题仍然间歇性发生"></a>如果做了所有尝试之后问题仍然间歇性发生</h2><p>制造失败的目的有三个：<br><br>1.观察错误<br><br>2.查找线索<br><br>3.确认是否已修复<br><br>记住，问题是美哦与自己的思维的，失败肯定有原因，你一定能够找到它。</p><h4 id="仔细观察失败"><a href="#仔细观察失败" class="headerlink" title="仔细观察失败"></a>仔细观察失败</h4><p>如果他不是每次都发生，那么就必须忽略掉不发生的时候，而在它每次发生时观察它。关键是在每次运行的时候捕捉相关信息，以便在发生失败之后查看这些数据。方法就是让系统在运行的时候尽可能多地输出信息，并把它们记录到“调试日志”文件中。</p><h4 id="不要盲目相信统计数据"><a href="#不要盲目相信统计数据" class="headerlink" title="不要盲目相信统计数据"></a>不要盲目相信统计数据</h4><p>制造失败的第二个目的是获得问题发生的线索。当发生一个间歇性问题时，你可以注意那些看起来与问题有关的操作模式。这种思路是没有问题的，但不要被表面现象所误导。<br>如果失败是随机发生的，你可能无法收集到足够多地统计样本来作出判断，例如，用左手点击按钮与用右手点击按钮是否有着很大的区别。在很多时候，巧合会使你误认为莫衷条件比其他条件更可能引发问题。然后你就会开始仔细研究“这两种条件之间有什么区别”，由于你找错了对象，这将会浪费大量时间。<br>这并不意味着你所看到的这些巧合的区别与问题不存在任何联系。但是，如果它们没有直接的影响，那么它们与问题的联系将会隐藏在其他随机因素背后，这时通过查看这些区别来找到原因的机会是非常渺茫的。<br>当你捕获到足够多的信息时，就可以确定哪些因素总是与bug有关，或者哪些因素从来都与bug无关。在查找问题根源的时候，这些因素是需要重点关注的。</p><h4 id="是已修复bug，还是仅仅由于运气好，它不再发生了"><a href="#是已修复bug，还是仅仅由于运气好，它不再发生了" class="headerlink" title="是已修复bug，还是仅仅由于运气好，它不再发生了"></a>是已修复bug，还是仅仅由于运气好，它不再发生了</h4><p>如果失败是随机发生的，那么要想证明bug是否已被修复就会困难得多，这一点是毫无疑问的。如果在测试的时候，每10次发生1次失败，在你“修复”它之后，变成了每30次发生1次，而你在测试28次之后终止了测试，这时你认为问题已修复，但实际上并没有。<br>最好的办法是找到一个总是与失败有关的事件序列。即使这个序列本身就是间歇性的，但当它发生时，100%会发生失败。然后，当你认为已修复bug时，就可以运行测试，直到这个序列出现，如果没有发生失败，那么你确实已修复了bug。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;制造失败&quot;&gt;&lt;a href=&quot;#制造失败&quot; class=&quot;headerlink&quot; title=&quot;制造失败&quot;&gt;&lt;/a&gt;制造失败&lt;/h1&gt;&lt;h2 id=&quot;如果做了所有尝试之后问题仍然间歇性发生&quot;&gt;&lt;a href=&quot;#如果做了所有尝试之后问题仍然间歇性发生&quot; class
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="https://deflin.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="调试" scheme="https://deflin.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>CoAP协议——格式详解</title>
