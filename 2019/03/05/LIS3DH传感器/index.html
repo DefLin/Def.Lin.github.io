@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Def.Lin." />
+  <meta name="keywords" content="传感器," />
 
 
 
@@ -79,16 +79,30 @@
 
 
 
-<meta name="description" content="Def&apos;s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="林定益想去NASA捡垃圾">
-<meta property="og:url" content="http://deflin.top/tags/WiFi/index.html">
+<meta name="description" content="中断功能INT1中断Lis3dh提供了一个INT1 (inertial interrupt)的信号处理中断，它包括下面三个寄存器。   INT1_CFG(30h)   INT1_THS(32h)   INT1_DURATION(33h)简单的说这个中断的功能就是检测sensor三个轴的加速度的值大于或小于设定阀值的信号，在寄存器INT_CFG里，你可以选择哪个轴的值大于或小于这个阀值，这里可以组合">
+<meta name="keywords" content="传感器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LIS3DH传感器用法">
+<meta property="og:url" content="http://deflin.top/2019/03/05/LIS3DH传感器/index.html">
 <meta property="og:site_name" content="林定益想去NASA捡垃圾">
-<meta property="og:description" content="Def&apos;s Blog">
+<meta property="og:description" content="中断功能INT1中断Lis3dh提供了一个INT1 (inertial interrupt)的信号处理中断，它包括下面三个寄存器。   INT1_CFG(30h)   INT1_THS(32h)   INT1_DURATION(33h)简单的说这个中断的功能就是检测sensor三个轴的加速度的值大于或小于设定阀值的信号，在寄存器INT_CFG里，你可以选择哪个轴的值大于或小于这个阀值，这里可以组合">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100407-st1.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100408-st2.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100409-st3.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100410-st4.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100411-st5.jpg">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100412-st6.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100413-st7.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100417-st11.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100418-st12.png">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100419-st13.jpg">
+<meta property="og:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100420-st14.png">
+<meta property="og:updated_time" content="2018-09-09T03:08:43.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="林定益想去NASA捡垃圾">
-<meta name="twitter:description" content="Def&apos;s Blog">
+<meta name="twitter:title" content="LIS3DH传感器用法">
+<meta name="twitter:description" content="中断功能INT1中断Lis3dh提供了一个INT1 (inertial interrupt)的信号处理中断，它包括下面三个寄存器。   INT1_CFG(30h)   INT1_THS(32h)   INT1_DURATION(33h)简单的说这个中断的功能就是检测sensor三个轴的加速度的值大于或小于设定阀值的信号，在寄存器INT_CFG里，你可以选择哪个轴的值大于或小于这个阀值，这里可以组合">
+<meta name="twitter:image" content="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100407-st1.png">
 
 
 
@@ -118,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://deflin.top/tags/WiFi/"/>
+  <link rel="canonical" href="http://deflin.top/2019/03/05/LIS3DH传感器/"/>
 
 
 
 
 
-  <title>标签: WiFi | 林定益想去NASA捡垃圾</title>
+  <title>LIS3DH传感器用法 | 林定益想去NASA捡垃圾</title>
   
 
 
@@ -143,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/DefLin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -314,54 +328,260 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>WiFi<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://deflin.top/2019/03/05/LIS3DH传感器/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Def Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林定益想去NASA捡垃圾">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/05/基于CC3200实现WiFi Direct/" itemprop="url">
-              
-                <span itemprop="name">基于CC3200实现WiFi Direct</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">LIS3DH传感器用法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-05T13:31:09+08:00"
-              content="2019-03-05" >
-          03-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T13:31:09+08:00">
+                2019-03-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/传感器/" itemprop="url" rel="index">
+                    <span itemprop="name">传感器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/05/LIS3DH传感器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/03/05/LIS3DH传感器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,199
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+
+              
+                <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+              
+
+            </div>
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+
+      
+        <h1 id="中断功能"><a href="#中断功能" class="headerlink" title="中断功能"></a>中断功能</h1><h2 id="INT1中断"><a href="#INT1中断" class="headerlink" title="INT1中断"></a>INT1中断</h2><p>Lis3dh提供了一个INT1 (inertial interrupt)的信号处理中断，它包括下面三个寄存器。  </p>
+<p><font color="#2DDAEC">INT1_CFG(30h)</font>  </p>
+<p><font color="#2DDAEC">INT1_THS(32h)</font>  </p>
+<p><font color="#2DDAEC">INT1_DURATION(33h)</font><br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100407-st1.png" alt="" title="" width=" " height=" "><br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100408-st2.png" alt="" title="" width=" " height=" "><br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100409-st3.png" alt="" title="" width=" " height=" "><br>简单的说这个中断的功能就是检测sensor三个轴的加速度的值大于或小于设定阀值的信号，在寄存器INT_CFG里，你可以选择哪个轴的值大于或小于这个阀值，这里可以组合你要检测的轴，亦即方向（大于或小于）。INT1_THS就是设定的阀值，这个值是一个绝对的值，假如设定这个值是200mg, 然后enable XLIE，这意味你要检测到X轴的值小于200mg，大于-200mg的信号。如果enable XHIE, 这表示你要检测到x轴大于200mg，或小于-200mg的信号，INT1_DURATION 定义检测到设定信号后持续的时间，当达到这个时间后就可以触发中断，当然这里还要设置下如下寄存器的I1_AOI1 把实际的中断信号enable到硬件的中断管脚1。<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100410-st4.png" alt="" title="" width=" " height=" "><br>信号检测的模型<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100411-st5.jpg" alt="" title="" width=" " height=" "> </p>
+<h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><ol>
+<li>THS设置 首先阀值的设置是和sensor设定的测量范围是相关的，如下表，如sensor的测量范围设为2g时，阀值寄存器的每个逻辑数对应的是16mg。举个例子，我们要设定一个256mg的wakeup的阀值，我们就应该在INT1_THS写入16。因为16mg*16=256mg<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100412-st6.png" alt="" title="" width=" " height=" "> </li>
+<li>Duration设置 Duration时间的设置是与sensor的ODR( output datarate )相关的，如下表，所以duration= 1/ODR * LSB，LSB写入寄存器的值。<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100413-st7.png" alt="" title="" width=" " height=" "></li>
+</ol>
+<h2 id="基于int1实现的功能"><a href="#基于int1实现的功能" class="headerlink" title="基于int1实现的功能"></a>基于int1实现的功能</h2><ol>
+<li>Wake up 当传感器静止放在水平面时，x轴和y轴是一个接近0mg的值，这时可以设置x轴和y轴中任意一个值大于设定的阀值，当触发中断时，表明这个器件姿态发生了变化，导致x轴和y轴大于阀值，从而唤醒主控。但有个问题是当器件不是放在水平面时怎么办，x和y 可能是一个任意的-1g到1g 的值，如何设定这个阀值，还有在水平的情况下，又如何检测z 轴，因为此时z轴是个1 g或-1g的值。最好的情况是当器件静止但在任意姿态时，最好三个轴的输出都接近0mg，我只要检测到任意一个轴大于一个小的阀值，就表明器件姿态发生了改变，相比前面只检测x和y轴，这样灵敏度会大大提高。要达到这个目的就要用到highpass filter 功能。当设置了HPIS1后，highpass filter可以滤掉数据的直流分量，只要器件静止，任何一个轴的数据都是0mg，当器件姿态变化时，这个变化的量仍能体现在数据的输出上，所以可以检测相应变化。 Note: 这里的highpass filter 只作用在int1上，而不会影响sensor的数据输出  </li>
+<li>free fall 这个功能刚好是与wake up相反的，它是检测到三个轴都小于一个阀值，另一个不同的是触发条件是三个轴同时满足，和wakeup 任意一个轴触发是不同的，体现在寄存器INT1_CFG 的AOIbit , AOI 决定了这些信号是与关系还是或关系，显然对于wake up 是或的关系，对于freefall是与的关系。  </li>
+<li>6D 如下图，你可以看到器件的6个position, 6D功能就是检测当前是在那个或移动到哪个position的一种状态识别。<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100417-st11.png" alt="" title="" width=" " height=" "><br>这个功能要用到INT1的另一个source寄存器，实际上就是通过source寄存器来确定6D position。<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100418-st12.png" alt="" title="" width=" " height=" "><br>XH，YH，ZH，分别表示x，y，z轴在正方向大于或小于阀值的状态 XL，YL，ZL，分别表示x，y，z轴在负方向上大于或小于阀值的状态<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100419-st13.jpg" alt="" title="" width=" " height=" "><br>如下表source的组合对应的就是上图的6个positions。<br><img src="http://www.eetrend.com/files-eetrend/technology/201705/100071105-100420-st14.png" alt="" title="" width=" " height=" "><br>这里6d有两种工作模式，一个是movement识别，另一个是position识别。 Movement: 就是当物体从一个已知的或未知的方向转动到另一个已知的但不同原方向的方向，并且产生一个1/ODR( 数据输出平率)周期的中断。 Position: 当物体稳定在一个已知的方向，将产生一个持续的中断信号直到方向改变。 通过INT_CFG1的AO1，6D bit 配置这两种模。 Movement: AOI-6D = 01 Position: AOI-6D = 11 对于这六个面的识别，很关建的是阀值的设置，在相对静态的转动时，每个轴最大是1g 或-1g，考虑到sensor的offset，和一些其他的误差，所以阀值要适当小于1g，但不能太小，不能出现两个轴同时大于阀值的情况。</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+
+      <div>
+        
+          
+        
+      </div>
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Def Lin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/传感器/" rel="tag"># 传感器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/Hi2115开发——ADC使用/" rel="next" title="Hi2115开发——ADC使用">
+                <i class="fa fa-chevron-left"></i> Hi2115开发——ADC使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/SCons的使用/" rel="prev" title="SCons的使用">
+                SCons的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -369,6 +589,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -389,8 +623,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -498,6 +741,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断功能"><span class="nav-number">1.</span> <span class="nav-text">中断功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INT1中断"><span class="nav-number">1.1.</span> <span class="nav-text">INT1中断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数设置"><span class="nav-number">1.2.</span> <span class="nav-text">参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于int1实现的功能"><span class="nav-number">1.3.</span> <span class="nav-text">基于int1实现的功能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -647,6 +906,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -664,6 +927,18 @@
       <script id="dsq-count-scr" src="https://michaelxiang.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://deflin.top/2019/03/05/LIS3DH传感器/';
+          this.page.identifier = '2019/03/05/LIS3DH传感器/';
+          this.page.title = 'LIS3DH传感器用法';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://michaelxiang.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
