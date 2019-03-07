@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://deflin.top/"/>
-  <updated>2019-03-07T09:32:27.106Z</updated>
+  <updated>2019-03-07T09:49:48.325Z</updated>
   <id>http://deflin.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://deflin.top/2019/03/07/%E6%B5%8B%E8%AF%95/"/>
+    <id>http://deflin.top/2019/03/07/测试/</id>
+    <published>2019-03-07T09:49:27.237Z</published>
+    <updated>2019-03-07T09:49:48.325Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title: 测试<br>categories:</p><ul><li>物联网<br>tags:</li><li>CoAP</li><li>网络协议   </li></ul><hr><p><img src="en-resource://database/611:0" alt="5fa4cc596cafa9705a8952f2db23f06c.jpeg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title: 测试&lt;br&gt;categories:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;物联网&lt;br&gt;tags:&lt;/li&gt;
+&lt;li&gt;CoAP&lt;/li&gt;
+&lt;li&gt;网络协议   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;en-resource://databas
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>diff和patch用法</title>
