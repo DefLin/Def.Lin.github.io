@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://deflin.top/"/>
-  <updated>2019-03-07T09:32:27.106Z</updated>
+  <updated>2019-03-08T06:45:33.005Z</updated>
   <id>http://deflin.top/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LiteOS——消息队列使用</title>
+    <link href="http://deflin.top/2019/03/08/LiteOS%E2%80%94%E2%80%94%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%BD%BF%E7%94%A8/"/>
+    <id>http://deflin.top/2019/03/08/LiteOS——消息队列使用/</id>
+    <published>2019-03-08T06:45:43.253Z</published>
+    <updated>2019-03-08T06:45:33.005Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="LiteOS——消息队列使用"><a href="#LiteOS——消息队列使用" class="headerlink" title="LiteOS——消息队列使用"></a>LiteOS——消息队列使用</h1><h3 id="1-声明队列名称"><a href="#1-声明队列名称" class="headerlink" title="1.声明队列名称"></a>1.声明队列名称</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> osMessageQueueId_t dns_incoming_queue = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure></p><h3 id="2-创建队列"><a href="#2-创建队列" class="headerlink" title="2.创建队列"></a>2.创建队列</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dns_create_queue</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   dns_incoming_queue =                     osMessageQueueNew(DNS_MAIN_MSG_QUEUE_LEN,      DNS_MAIN_QUEUE_ITEM_SIZE, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span> == dns_incoming_queue)</span><br><span class="line">    &#123;</span><br><span class="line">        APP_COAP_ERROR(<span class="string">"creat dns queue f"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="3-发送消息"><a href="#3-发送消息" class="headerlink" title="3.发送消息"></a>3.发送消息</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dns_send_to_incoming_queue</span><span class="params">(uint32 state)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)osMessageQueuePut(dns_incoming_queue, (<span class="keyword">void</span>*)&amp;state, <span class="number">0</span>, osWaitForever);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="4-接收消息"><a href="#4-接收消息" class="headerlink" title="4.接收消息"></a>4.接收消息</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (osMessageQueueGet(dns_incoming_queue, (<span class="keyword">void</span>*)&amp;queue_msg, <span class="literal">NULL</span>, osWaitForever) == osOK)</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;LiteOS——消息队列使用&quot;&gt;&lt;a href=&quot;#LiteOS——消息队列使用&quot; class=&quot;headerlink&quot; title=&quot;LiteOS——消息队列使用&quot;&gt;&lt;/a&gt;LiteOS——消息队列使用&lt;/h1&gt;&lt;h3 id=&quot;1-声明队列名称&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="操作系统" scheme="http://deflin.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="LiteOS" scheme="http://deflin.top/tags/LiteOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LiteOS——信号量使用</title>
+    <link href="http://deflin.top/2019/03/08/LiteOS%E2%80%94%E2%80%94%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%BD%BF%E7%94%A8/"/>
+    <id>http://deflin.top/2019/03/08/LiteOS——信号量使用/</id>
+    <published>2019-03-08T06:45:43.250Z</published>
+    <updated>2019-03-08T06:43:35.066Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="LiteOS——信号量使用"><a href="#LiteOS——信号量使用" class="headerlink" title="LiteOS——信号量使用"></a>LiteOS——信号量使用</h1><h2 id="信号量的使用："><a href="#信号量的使用：" class="headerlink" title="信号量的使用："></a>信号量的使用：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">osMutexNew（）；<span class="comment">//创建信号量</span></span><br><span class="line"><span class="function">osStatus_t <span class="title">osMutexAcquire</span> <span class="params">(osMutexId_t mutex_id, <span class="keyword">uint32_t</span> timeout)</span><span class="comment">//接收信号量</span></span></span><br><span class="line"><span class="function">osStatus_t <span class="title">osMutexRelease</span> <span class="params">(osMutexId_t mutex_id)</span><span class="comment">//释放信号量</span></span></span><br><span class="line">``` </span><br><span class="line">### <span class="number">1.</span>声明一个信号量</span><br><span class="line">例如：</span><br><span class="line">``` cpp </span><br><span class="line"><span class="keyword">static</span> osMutexId_t app_at_asyc_semaphore = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure><h3 id="2-创建信号量"><a href="#2-创建信号量" class="headerlink" title="2.创建信号量"></a>2.创建信号量</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">app_at_async_notify_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    app_at_asyc_semaphore = osMutexNew(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (!app_at_asyc_semaphore)</span><br><span class="line">    &#123;</span><br><span class="line">        assert(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="3-释放信号量"><a href="#3-释放信号量" class="headerlink" title="3.释放信号量"></a>3.释放信号量</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">app_at_asnyc_give_semaphore</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (osMutexRelease(app_at_asyc_semaphore) != osOK)</span><br><span class="line">    &#123;</span><br><span class="line">        assert(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="4-获取信号量"><a href="#4-获取信号量" class="headerlink" title="4.获取信号量"></a>4.获取信号量</h3><p>例如：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">app_at_asnyc_take_semaphore</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(osMutexAcquire(app_at_asyc_semaphore, osWaitForever) != osOK)</span><br><span class="line">    &#123;</span><br><span class="line">        assert(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;LiteOS——信号量使用&quot;&gt;&lt;a href=&quot;#LiteOS——信号量使用&quot; class=&quot;headerlink&quot; title=&quot;LiteOS——信号量使用&quot;&gt;&lt;/a&gt;LiteOS——信号量使用&lt;/h1&gt;&lt;h2 id=&quot;信号量的使用：&quot;&gt;&lt;a href=&quot;#信号
+      
+    
+    </summary>
+    
+      <category term="操作系统" scheme="http://deflin.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="LiteOS" scheme="http://deflin.top/tags/LiteOS/"/>
+    
+  </entry>
   
   <entry>
     <title>diff和patch用法</title>
