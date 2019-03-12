@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://deflin.top/"/>
-  <updated>2019-03-08T06:45:33.005Z</updated>
+  <updated>2019-03-12T07:13:48.292Z</updated>
   <id>http://deflin.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NB-IoT上实现TCP连接</title>
+    <link href="http://deflin.top/2019/03/12/NB-IoT%E4%B8%8A%E5%AE%9E%E7%8E%B0TCP%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://deflin.top/2019/03/12/NB-IoT上实现TCP连接/</id>
+    <published>2019-03-12T07:14:04.540Z</published>
+    <updated>2019-03-12T07:13:48.292Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NB-IoT上实现TCP连接"><a href="#NB-IoT上实现TCP连接" class="headerlink" title="NB-IoT上实现TCP连接"></a>NB-IoT上实现TCP连接</h1><h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>创建网络初始化任务（netWorkTask），根据配置，通过AT命令配置成TCP协议。<br>配置TCP协议过程如下：  </p><h3 id="一、配置TCP的IP地址，地址参数通过initTCP接口函数传入。"><a href="#一、配置TCP的IP地址，地址参数通过initTCP接口函数传入。" class="headerlink" title="一、配置TCP的IP地址，地址参数通过initTCP接口函数传入。"></a>一、配置TCP的IP地址，地址参数通过initTCP接口函数传入。</h3><h3 id="二、配置TCP的端口号，同样由以上函数传入。"><a href="#二、配置TCP的端口号，同样由以上函数传入。" class="headerlink" title="二、配置TCP的端口号，同样由以上函数传入。"></a>二、配置TCP的端口号，同样由以上函数传入。</h3><h3 id="三、初始化NB的IP："><a href="#三、初始化NB的IP：" class="headerlink" title="三、初始化NB的IP："></a>三、初始化NB的IP：</h3><h4 id="1、调用bs-connect函数，此函数的主要功能是："><a href="#1、调用bs-connect函数，此函数的主要功能是：" class="headerlink" title="1、调用bs_connect函数，此函数的主要功能是："></a>1、调用bs_connect函数，此函数的主要功能是：</h4><p>设置手机的全功能打开（CFUN=1）；<br>如果是CoAP协议的话，还须设置NCDP ;<br>查询IMEI号；<br>重启；<br>打开错误提示；<br>开启自动上报；<br>GPRS附着；<br>设置连接基站；<br>通过查询IP（CGPADDR）判断是否联网。  </p><h4 id="2、创建IPSocket-createipsocket"><a href="#2、创建IPSocket-createipsocket" class="headerlink" title="2、创建IPSocket(createipsocket):"></a>2、创建IPSocket(createipsocket):</h4><p>清除接收缓冲区；<br>向模组发送AT+NSOCL命令；<br>判断是否创建成功，若成功就返回socket_num，通过串口打印。  </p><h4 id="3、令receive-type等于Rec-IP"><a href="#3、令receive-type等于Rec-IP" class="headerlink" title="3、令receive_type等于Rec_IP"></a>3、令receive_type等于Rec_IP</h4><h3 id="四、判断是否初始化成功，如果不成功，初始化LWIP（LwIP-Init-）发送LWIP信号量，然后调用lwip-tcp-init函数，初始化TCP客户端tcp-client-init（）："><a href="#四、判断是否初始化成功，如果不成功，初始化LWIP（LwIP-Init-）发送LWIP信号量，然后调用lwip-tcp-init函数，初始化TCP客户端tcp-client-init（）：" class="headerlink" title="四、判断是否初始化成功，如果不成功，初始化LWIP（LwIP_Init()）发送LWIP信号量，然后调用lwip_tcp_init函数，初始化TCP客户端tcp_client_init（）："></a>四、判断是否初始化成功，如果不成功，初始化LWIP（LwIP_Init()）发送LWIP信号量，然后调用lwip_tcp_init函数，初始化TCP客户端tcp_client_init（）：</h3><h4 id="1、配置服务器IP地址；"><a href="#1、配置服务器IP地址；" class="headerlink" title="1、配置服务器IP地址；"></a>1、配置服务器IP地址；</h4><h4 id="2、调用tcp-new-函数-该函数调用的是tcp-alloc函数，其作用是分配一个新的tcp-pcb结构；（具体内容参考网上详细资料，这-里不做赘述）"><a href="#2、调用tcp-new-函数-该函数调用的是tcp-alloc函数，其作用是分配一个新的tcp-pcb结构；（具体内容参考网上详细资料，这-里不做赘述）" class="headerlink" title="2、调用tcp_new()函数,该函数调用的是tcp_alloc函数，其作用是分配一个新的tcp_pcb结构；（具体内容参考网上详细资料，这                   里不做赘述）"></a>2、调用tcp_new()函数,该函数调用的是tcp_alloc函数，其作用是分配一个新的tcp_pcb结构；（具体内容参考网上详细资料，这                   里不做赘述）</h4><h4 id="3、将新分配的pcb结构赋值TPCD变量。"><a href="#3、将新分配的pcb结构赋值TPCD变量。" class="headerlink" title="3、将新分配的pcb结构赋值TPCD变量。"></a>3、将新分配的pcb结构赋值TPCD变量。</h4><h4 id="4、如果上述的pcb不为空，那么将nb-ip和tcp-port绑定，这里调用tcp-bind-tpcb-amp-nb-ip-tcp-port-函数实现。"><a href="#4、如果上述的pcb不为空，那么将nb-ip和tcp-port绑定，这里调用tcp-bind-tpcb-amp-nb-ip-tcp-port-函数实现。" class="headerlink" title="4、如果上述的pcb不为空，那么将nb_ip和tcp_port绑定，这里调用tcp_bind(tpcb, &amp;nb_ip, tcp_port)函数实现。"></a>4、如果上述的pcb不为空，那么将nb_ip和tcp_port绑定，这里调用tcp_bind(tpcb, &amp;nb_ip, tcp_port)函数实现。</h4><h4 id="5、若绑定函数返回成功，则建立tcp连接，调用tcp-connect-tpcb-amp-ipaddr-tcp-port-tcp-client-accept-函数。"><a href="#5、若绑定函数返回成功，则建立tcp连接，调用tcp-connect-tpcb-amp-ipaddr-tcp-port-tcp-client-accept-函数。" class="headerlink" title="5、若绑定函数返回成功，则建立tcp连接，调用tcp_connect(tpcb, &amp;ipaddr, tcp_port, tcp_client_accept)函数。"></a>5、若绑定函数返回成功，则建立tcp连接，调用tcp_connect(tpcb, &amp;ipaddr, tcp_port, tcp_client_accept)函数。</h4><p>其中 tcp_client_accept 函数中调用了tcp_recv(tpcb, tcp_client_recv)来获取tcp的接收内容。</p><p>而这一过程是由tcp_client_recv函数实现的：</p><p>通过调用 tcp_recved 函数将接收到的数据存到 p-&gt;payload地址下tcp_recved(tpcb, p-&gt;tot_len)  </p><p>通过onGetData(p-&gt;payload,p-&gt;len)函数，将接收到的数据回传。回传的数据存到pgetData变量中。</p><p>清空接收缓冲区</p><h2 id="其次"><a href="#其次" class="headerlink" title="其次"></a>其次</h2><p>完成上述配置过程之后，设置TCP数据的回调函数，setGetTCPDataCallBack(getInputData)。 getInputData 函数的作用是检查服务器是否有应答。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NB-IoT上实现TCP连接&quot;&gt;&lt;a href=&quot;#NB-IoT上实现TCP连接&quot; class=&quot;headerlink&quot; title=&quot;NB-IoT上实现TCP连接&quot;&gt;&lt;/a&gt;NB-IoT上实现TCP连接&lt;/h1&gt;&lt;h2 id=&quot;首先&quot;&gt;&lt;a href=&quot;#首先&quot;
+      
+    
+    </summary>
+    
+      <category term="NB-IoT" scheme="http://deflin.top/categories/NB-IoT/"/>
+    
+    
+      <category term="TCP" scheme="http://deflin.top/tags/TCP/"/>
+    
+      <category term="网络协议" scheme="http://deflin.top/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>LiteOS——消息队列使用</title>
@@ -345,9 +372,9 @@
       <category term="物联网" scheme="http://deflin.top/categories/%E7%89%A9%E8%81%94%E7%BD%91/"/>
     
     
-      <category term="CoAP" scheme="http://deflin.top/tags/CoAP/"/>
-    
       <category term="网络协议" scheme="http://deflin.top/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="CoAP" scheme="http://deflin.top/tags/CoAP/"/>
     
   </entry>
   

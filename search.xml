@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[NB-IoT上实现TCP连接]]></title>
+    <url>%2F2019%2F03%2F12%2FNB-IoT%E4%B8%8A%E5%AE%9E%E7%8E%B0TCP%E8%BF%9E%E6%8E%A5%2F</url>
+    <content type="text"><![CDATA[NB-IoT上实现TCP连接首先创建网络初始化任务（netWorkTask），根据配置，通过AT命令配置成TCP协议。配置TCP协议过程如下： 一、配置TCP的IP地址，地址参数通过initTCP接口函数传入。二、配置TCP的端口号，同样由以上函数传入。三、初始化NB的IP：1、调用bs_connect函数，此函数的主要功能是：设置手机的全功能打开（CFUN=1）；如果是CoAP协议的话，还须设置NCDP ;查询IMEI号；重启；打开错误提示；开启自动上报；GPRS附着；设置连接基站；通过查询IP（CGPADDR）判断是否联网。 2、创建IPSocket(createipsocket):清除接收缓冲区；向模组发送AT+NSOCL命令；判断是否创建成功，若成功就返回socket_num，通过串口打印。 3、令receive_type等于Rec_IP四、判断是否初始化成功，如果不成功，初始化LWIP（LwIP_Init()）发送LWIP信号量，然后调用lwip_tcp_init函数，初始化TCP客户端tcp_client_init（）：1、配置服务器IP地址；2、调用tcp_new()函数,该函数调用的是tcp_alloc函数，其作用是分配一个新的tcp_pcb结构；（具体内容参考网上详细资料，这 里不做赘述）3、将新分配的pcb结构赋值TPCD变量。4、如果上述的pcb不为空，那么将nb_ip和tcp_port绑定，这里调用tcp_bind(tpcb, &amp;nb_ip, tcp_port)函数实现。5、若绑定函数返回成功，则建立tcp连接，调用tcp_connect(tpcb, &amp;ipaddr, tcp_port, tcp_client_accept)函数。其中 tcp_client_accept 函数中调用了tcp_recv(tpcb, tcp_client_recv)来获取tcp的接收内容。 而这一过程是由tcp_client_recv函数实现的： 通过调用 tcp_recved 函数将接收到的数据存到 p-&gt;payload地址下tcp_recved(tpcb, p-&gt;tot_len) 通过onGetData(p-&gt;payload,p-&gt;len)函数，将接收到的数据回传。回传的数据存到pgetData变量中。 清空接收缓冲区 其次完成上述配置过程之后，设置TCP数据的回调函数，setGetTCPDataCallBack(getInputData)。 getInputData 函数的作用是检查服务器是否有应答。]]></content>
+      <categories>
+        <category>NB-IoT</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LiteOS——消息队列使用]]></title>
     <url>%2F2019%2F03%2F08%2FLiteOS%E2%80%94%E2%80%94%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[LiteOS——消息队列使用1.声明队列名称例如：1static osMessageQueueId_t dns_incoming_queue = NULL; 2.创建队列例如：123456789void dns_create_queue(void)&#123; dns_incoming_queue = osMessageQueueNew(DNS_MAIN_MSG_QUEUE_LEN, DNS_MAIN_QUEUE_ITEM_SIZE, NULL); if(NULL == dns_incoming_queue) &#123; APP_COAP_ERROR("creat dns queue f"); &#125; return;&#125; 3.发送消息例如：1234void dns_send_to_incoming_queue(uint32 state)&#123; (void)osMessageQueuePut(dns_incoming_queue, (void*)&amp;state, 0, osWaitForever);&#125; 4.接收消息例如：1if (osMessageQueueGet(dns_incoming_queue, (void*)&amp;queue_msg, NULL, osWaitForever) == osOK)]]></content>
@@ -143,8 +155,8 @@
         <category>物联网</category>
       </categories>
       <tags>
-        <tag>CoAP</tag>
         <tag>网络协议</tag>
+        <tag>CoAP</tag>
       </tags>
   </entry>
 </search>
